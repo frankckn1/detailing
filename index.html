@@ -13,11 +13,14 @@
         h1 { font-size: 1.8rem; color: var(--text-brown); margin: 5px 0; letter-spacing: 2px; font-weight: 800; white-space: nowrap; }
         .main-slogan { font-size: 1.1rem; color: var(--accent-gold); font-weight: 600; margin: 18px 0 25px; letter-spacing: 1.5px; line-height: 1.7; padding: 0 10px; display: block; text-align: center; }
         
-        /* 經營特色 */
         .intro-features { padding: 30px 20px; max-width: 800px; margin: 0 auto; background: #fff; border-radius: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.03); border: 1px solid #f0f0f0; margin-top: -30px; position: relative; z-index: 10; text-align: center; }
         .feature-line { margin-bottom: 10px; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; }
         .feature-line i { color: var(--accent-gold); margin-right: 10px; font-size: 1rem; }
-        .location-box { background: var(--secondary-bg); padding: 12px; border-radius: 12px; margin-top: 20px; font-size: 0.85rem; color: var(--text-brown); font-weight: 600; }
+        
+        /* 服務區域與重劃區 */
+        .location-box { background: var(--secondary-bg); padding: 15px; border-radius: 12px; margin-top: 20px; color: var(--text-brown); }
+        .location-main { font-weight: 700; font-size: 0.95rem; letter-spacing: 1px; margin-bottom: 8px; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 8px; }
+        .location-sub { font-size: 0.85rem; color: #7a6b5d; font-weight: 500; display: block; line-height: 1.6; }
 
         .nav-btn { background: var(--accent-gold); color: white; padding: 13px 0; width: 210px; border-radius: 50px; text-decoration: none; font-weight: bold; display: block; margin: 25px auto; transition: 0.3s; font-size: 0.95rem; }
         .section-title { text-align: center; color: var(--text-brown); margin: 60px 0 30px; font-size: 1.5rem; position: relative; padding-bottom: 12px; font-weight: 700; }
@@ -27,7 +30,6 @@
         .gallery-item { border-radius: 10px; height: 160px; overflow: hidden; background: #eee; }
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* 方案卡片直列式排版 */
         .services { padding: 0 15px; max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 20px; }
         .service-card { background: #fff; padding: 30px 20px; border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.04); border: 1px solid #f8f8f8; }
         .service-card h3 { color: var(--accent-gold); margin-top: 0; font-size: 1.4rem; border-bottom: 1px solid #eee; padding-bottom: 12px; margin-bottom: 20px; text-align: center; }
@@ -39,7 +41,6 @@
         .price-row { display: flex; justify-content: space-between; font-size: 0.95rem; margin: 6px 0; color: var(--text-brown); font-weight: 700; }
         .highlight-wax { background: #fffaf5; padding: 12px; border-radius: 10px; margin-top: 15px; font-weight: 600; color: var(--text-brown); border: 1px dashed var(--accent-gold); font-size: 0.9rem; text-align: center; line-height: 1.8; }
 
-        /* 預約區塊絕對置中 */
         .booking-section { padding: 80px 15px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; background-color: var(--secondary-bg); }
         .booking-container { width: 100%; max-width: 400px; background: white; padding: 45px 25px; border-radius: 35px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); margin: 0 auto; box-sizing: border-box; }
         .qr-placeholder img { width: 180px; height: 180px; margin: 25px 0; border: 1px solid #eee; border-radius: 15px; padding: 8px; }
@@ -75,7 +76,13 @@
         <div class="feature-line"><i class="fas fa-check-circle"></i> 移動式服務，到您附近自助洗車場作業</div>
         <div class="feature-line"><i class="fas fa-check-circle"></i> 免費到府牽車／代洗服務</div>
         <div class="feature-line"><i class="fas fa-check-circle"></i> 汽機車皆可服務 · 邏輯經營誠信服務</div>
-        <div class="location-box">新莊｜泰山｜板橋｜蘆洲｜中永和｜大台北｜龜山</div>
+        
+        <div class="location-box">
+            <div class="location-main">新莊｜泰山｜板橋｜蘆洲｜中永和｜大台北｜龜山</div>
+            <div class="location-sub">
+                新莊副都心重劃區 · 新莊頭前重劃區 · 泰山塭仔圳重劃區
+            </div>
+        </div>
     </section>
 
     <h2 class="section-title" id="portfolio">職人洗車成品展示</h2>
@@ -174,36 +181,4 @@
     <section class="services">
         <div class="service-card">
             <div class="price-tag" style="background: none; border: none; padding: 0;">
-                <div class="price-row"><span>外觀塑料護理</span><span>+$300</span></div>
-                <div class="price-row"><span>內裝保養護理</span><span>+$300</span></div>
-                <div class="price-row"><span>美白清潔蠟施作</span><span>+$800</span></div>
-                <div class="price-row"><span>進口高階棕梠蠟</span><span>+$1,000</span></div>
-                <div class="price-row"><span>外觀塑料鍍膜</span><span>+$1,500</span></div>
-                <div class="price-row"><span>前擋玻璃鍍膜(含除油墨)</span><span>+$800</span></div>
-                <div class="price-row"><span>全車玻璃鍍膜(含除油墨)</span><span>+$2,000</span></div>
-                <div class="price-row"><span>局部拋光處理</span><span>車況報價</span></div>
-            </div>
-        </div>
-    </section>
-
-    <section class="booking-section">
-        <div class="booking-container">
-            <h2 style="color: var(--text-brown); margin: 0 0 10px;">美好行程，從潔淨開始</h2>
-            <p style="font-size: 0.9rem; color: #888;">立即掃描 QR Code 預約</p>
-            <div class="qr-placeholder">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://lin.ee/AgnWGzM" alt="預約QR Code">
-            </div>
-            <br>
-            <a href="https://lin.ee/AgnWGzM" class="btn-line"><i class="fab fa-line"></i> LINE 立即預約</a>
-            <div class="social-info">
-                <a href="https://www.facebook.com/profile.php?id=100063773703118" target="_blank"><i class="fab fa-facebook"></i> FB：法蘭克精緻汽車美容</a>
-                <a href="https://www.instagram.com/frank_wash_car" target="_blank"><i class="fab fa-instagram"></i> IG：@frank_wash_car</a>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>© 2026 法蘭克精緻汽車美容 | 邏輯經營 · 誠信服務</p>
-    </footer>
-</body>
-</html>
+                <div class="price-row"><span>
