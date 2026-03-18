@@ -18,19 +18,24 @@
         .intro-features { padding: 35px 15px; max-width: 850px; margin: -40px auto 40px; background: #fff; border-radius: 25px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); border: 2px solid #D7CCC8; position: relative; z-index: 10; text-align: center; width: calc(100% - 30px); box-sizing: border-box; }
         .feature-line { margin-bottom: 15px; font-size: 1.05rem; display: flex; align-items: center; justify-content: center; color: #000; font-weight: 700; }
         .feature-line i { color: #5D4037; min-width: 25px; margin-right: 10px; font-size: 1.2rem; }
+        
+        /* 區域排版修正：增加間距避免連在一起 */
         .location-box { background: #D7CCC8; padding: 20px 15px; border-radius: 15px; margin-top: 25px; color: #3E2723; border: 1px solid #A1887F; }
-        .location-main { font-weight: 900; font-size: 1rem; margin-bottom: 12px; color: #1A1A1A; border-bottom: 2px solid rgba(0,0,0,0.1); padding-bottom: 10px; display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; }
-        .location-sub { font-size: 0.95rem; color: #2C1E1B; font-weight: 700; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; line-height: 1.8; }
+        .location-main { font-weight: 900; font-size: 1rem; letter-spacing: 1px; margin-bottom: 12px; color: #1A1A1A; border-bottom: 2px solid rgba(0,0,0,0.1); padding-bottom: 10px; display: flex; flex-wrap: wrap; justify-content: center; gap: 5px 15px; } /* 增加 gap */
+        .location-main span { white-space: nowrap; }
+        .location-sub { font-size: 0.95rem; color: #2C1E1B; font-weight: 700; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 15px; line-height: 1.8; } /* 增加 gap */
         .location-sub span { white-space: nowrap; }
 
-        /* 社群導流區塊 (取代照片牆) */
-        .social-promo { text-align: center; padding: 40px 20px; background: #fff; border-radius: 20px; max-width: 800px; margin: 20px auto 50px; border: 1px solid #eee; }
-        .social-promo h2 { color: var(--text-brown); font-size: 1.5rem; font-weight: 800; margin-bottom: 15px; }
-        .social-promo p { font-size: 1rem; color: #555; margin-bottom: 25px; font-weight: 500; }
+        /* 社群導流區塊 (取代照片牆，精簡說法) */
+        .social-promo { text-align: center; padding: 40px 20px; background: #fff; border-radius: 20px; max-width: 800px; margin: 20px auto 50px; border: 1px solid #eee; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
+        .social-promo h2 { color: var(--text-brown); font-size: 1.5rem; font-weight: 800; margin-bottom: 20px; }
+        .social-promo p { font-size: 1rem; color: #555; margin-bottom: 30px; font-weight: 500; }
         .promo-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
-        .promo-btn { padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: 800; display: flex; align-items: center; gap: 10px; transition: 0.3s; }
+        .promo-btn { padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: 800; display: flex; align-items: center; gap: 10px; transition: 0.3s; font-size: 0.95rem; }
         .btn-fb { background: #1877F2; color: white; }
+        .btn-fb:hover { background: #145dbf; }
         .btn-ig { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: white; }
+        .btn-ig:hover { opacity: 0.9; }
 
         .section-title { text-align: center; color: var(--text-brown); margin: 60px 0 30px; font-size: 1.7rem; position: relative; padding-bottom: 15px; font-weight: 800; }
         .section-title::after { content: ''; width: 50px; height: 5px; background: var(--accent-gold); position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); border-radius: 3px; }
@@ -85,15 +90,20 @@
         <div class="feature-line"><i class="fas fa-check-circle"></i> 移動式服務，到您附近自助洗車場作業</div>
         <div class="feature-line"><i class="fas fa-check-circle"></i> 免費到府牽車／代洗服務</div>
         <div class="feature-line"><i class="fas fa-check-circle"></i> 汽機車皆可服務 · 邏輯經營誠信服務</div>
+        
         <div class="location-box">
-            <div class="location-main"><span>新莊</span>｜<span>泰山</span>｜<span>板橋</span>｜<span>蘆洲</span>｜<span>中永和</span>｜<span>大台北</span>｜<span>龜山</span></div>
-            <div class="location-sub"><span>新莊副都心重劃區</span> · <span>新莊頭前重劃區</span> · <span>泰山塭仔圳重劃區</span></div>
+            <div class="location-main">
+                <span>新莊</span>｜<span>泰山</span>｜<span>板橋</span>｜<span>蘆洲</span>｜<span>中永和</span>｜<span>大台北</span>｜<span>龜山</span>
+            </div>
+            <div class="location-sub">
+                <span>新莊副都心重劃區</span> · <span>新莊頭前重劃區</span> · <span>泰山塭仔圳重劃區</span>
+            </div>
         </div>
     </section>
 
     <section class="social-promo">
         <h2>✨ 職人實作見證</h2>
-        <p>每一台交託給法蘭克的愛車，都是最高標準的細節呈現。<br>歡迎至社群查看最即時的「施工成果」與「車主反饋」。</p>
+        <p>每一台交託給法蘭克的愛車，都是最高標準的細節呈現。<br>歡迎至社群查看最即時的施工成果。</p>
         <div class="promo-links">
             <a href="https://www.facebook.com/profile.php?id=100063773703118" target="_blank" class="promo-btn btn-fb">
                 <i class="fab fa-facebook-square"></i> 查看 FB 成果照
@@ -166,7 +176,7 @@
             <div class="price-tag">
                 <div class="price-row"><span>轎車</span><span>$5,000</span></div>
                 <div class="price-row"><span>休旅</span><span>$5,500</span></div>
-                <div class="price-row)<span>商務</span><span>$7,000</span></div>
+                <div class="price-row"><span>商務</span><span>$7,000</span></div>
             </div>
             <div class="highlight-wax">Swissvax 瑪瑙蠟<br>Adam's Boost</div>
         </div>
@@ -202,7 +212,7 @@
 
     <section class="booking-section">
         <div class="booking-container">
-            <h2 style="color: var(--text-brown); margin-bottom: 10px; font-weight: 900;">美好行程，從潔淨開始</h2>
+            <h2 style="color: var(--text-brown); margin: 0 0 10px; font-weight: 900;">美好行程，從潔淨開始</h2>
             <div class="qr-placeholder">
                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://lin.ee/AgnWGzM" alt="預約 QR Code">
             </div>
