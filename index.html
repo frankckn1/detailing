@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>法蘭克精緻汽車美容 | 職人級車漆護理</title>
+    <title>法蘭克精緻汽車美容 | 極致漆面美學護理</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root { --primary-bg: #FDFBFB; --secondary-bg: #F4F1EA; --accent-gold: #B08D57; --text-dark: #1A1A1A; --text-brown: #3E2723; --card-dark-bg: #3E2723; --card-dark-gold: #D4B78D; --card-medium-bg: #6D4C41; }
@@ -14,13 +14,19 @@
         h1 { font-size: clamp(1.5rem, 8vw, 1.8rem); color: var(--text-brown); margin: 5px 0; letter-spacing: 2px; font-weight: 800; white-space: nowrap; }
         .main-slogan { font-size: 1.1rem; color: #8D6E63; font-weight: 800; margin: 18px 0 25px; text-align: center; }
         
+        /* 服務特色與城市 */
         .intro-features { padding: 35px 15px; max-width: 850px; margin: -40px auto 40px; background: #fff; border-radius: 25px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); border: 2px solid #D7CCC8; position: relative; z-index: 10; text-align: center; width: calc(100% - 30px); box-sizing: border-box; }
         .feature-line { margin-bottom: 15px; font-size: 1.05rem; display: flex; align-items: center; justify-content: center; color: #000; font-weight: 700; }
         .feature-line i { color: #5D4037; min-width: 25px; margin-right: 10px; font-size: 1.2rem; }
+        
+        /* 城市區塊加強 */
         .location-box { background: #D7CCC8; padding: 20px 15px; border-radius: 15px; margin-top: 25px; color: #3E2723; border: 1px solid #A1887F; }
         .location-main { font-weight: 900; font-size: 1rem; letter-spacing: 1px; margin-bottom: 12px; color: #1A1A1A; border-bottom: 2px solid rgba(0,0,0,0.1); padding-bottom: 10px; display: flex; flex-wrap: wrap; justify-content: center; gap: 5px 15px; }
+        .location-main span { white-space: nowrap; }
         .location-sub { font-size: 0.95rem; color: #2C1E1B; font-weight: 700; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 15px; line-height: 1.8; }
+        .location-sub span { white-space: nowrap; }
 
+        /* 社群導流：三行排版 */
         .social-promo { text-align: center; padding: 40px 15px; background: #fff; border-radius: 20px; max-width: 800px; margin: 20px auto 50px; border: 1px solid #eee; box-shadow: 0 5px 15px rgba(0,0,0,0.03); width: calc(100% - 30px); box-sizing: border-box; }
         .social-promo h2 { color: var(--text-brown); font-size: 1.5rem; font-weight: 800; margin-bottom: 20px; }
         .social-promo p { font-size: 1rem; color: #555; margin-bottom: 30px; font-weight: 700; line-height: 2; letter-spacing: 0.5px; }
@@ -38,7 +44,6 @@
         .service-list { list-style: none; padding: 0; font-size: 1rem; font-weight: 500; text-align: left; }
         .service-list li { margin-bottom: 12px; display: block; }
         .service-list li::before { content: '✓'; color: var(--accent-gold); margin-right: 12px; font-weight: 900; }
-        
         .price-tag { background: rgba(0,0,0,0.2); padding: 15px; border-radius: 12px; margin-top: 20px; border: 1px solid rgba(255,255,255,0.1); }
         .price-row { display: flex; justify-content: space-between; font-size: 1rem; margin: 8px 0; color: #fff; font-weight: 900; }
         
@@ -51,7 +56,7 @@
         .medium-card { background-color: var(--card-medium-bg) !important; color: #fff !important; }
         .medium-card h3 { color: #fff !important; border-bottom-color: rgba(255,255,255,0.2) !important; }
         
-        /* 特別設計：維護方案樣式 (深色金邊) */
+        /* 維護方案樣式 */
         .maintenance-card { background-color: #2D1E1B !important; color: #fff !important; border: 2px solid var(--accent-gold) !important; }
         .maintenance-card h3 { color: var(--accent-gold) !important; border-bottom-color: rgba(176,141,87,0.3) !important; }
         .maintenance-card .price-row { color: var(--accent-gold) !important; }
@@ -135,7 +140,7 @@
         </div>
         <div class="service-card medium-card">
             <h3>尊榮美容</h3>
-            <ul class="service-list"><li>包含經典護理項目</li><li>瓷土除漆面顆粒</li><li>內裝保養護理</li><li>外觀塑料護理</li><li>全車玻璃油墨去除</li></ul>
+            <ul class="service-list"><li>包含經典護理項目</li><li>瓷土除漆面顆粒</li><li>內裝保養護理</li><li>外觀塑料護理</li></ul>
             <div class="price-tag">
                 <div class="price-row"><span>轎車</span><span>$2,400</span></div>
                 <div class="price-row"><span>休旅</span><span>$2,500</span></div>
@@ -194,7 +199,7 @@
         <div class="service-card addon-card">
             <div class="price-tag">
                 <div class="price-row"><span>外觀塑料護理</span><span>+$300</span></div>
-                <div class="price-row"><span>內裝保養護理</span><span>+$300</span></div>
+                <div class="price-row)<span>內裝保養護理</span><span>+$300</span></div>
                 <div class="price-row"><span>美白清潔蠟施作</span><span>+$800</span></div>
                 <div class="price-row"><span>漆面高階棕梠蠟</span><span>+$1,000</span></div>
                 <div class="price-row"><span>外觀塑料鍍膜</span><span>+$1,500</span></div>
