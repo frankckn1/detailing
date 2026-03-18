@@ -14,7 +14,6 @@
         h1 { font-size: clamp(1.5rem, 8vw, 1.8rem); color: var(--text-brown); margin: 5px 0; letter-spacing: 2px; font-weight: 800; white-space: nowrap; }
         .main-slogan { font-size: 1.1rem; color: #8D6E63; font-weight: 800; margin: 18px 0 25px; text-align: center; }
         
-        /* 服務特色 */
         .intro-features { padding: 35px 15px; max-width: 850px; margin: -40px auto 40px; background: #fff; border-radius: 25px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); border: 2px solid #D7CCC8; position: relative; z-index: 10; text-align: center; width: calc(100% - 30px); box-sizing: border-box; }
         .feature-line { margin-bottom: 15px; font-size: 1.05rem; display: flex; align-items: center; justify-content: center; color: #000; font-weight: 700; }
         .feature-line i { color: #5D4037; min-width: 25px; margin-right: 10px; font-size: 1.2rem; }
@@ -22,7 +21,6 @@
         .location-main { font-weight: 900; font-size: 1rem; letter-spacing: 1px; margin-bottom: 12px; color: #1A1A1A; border-bottom: 2px solid rgba(0,0,0,0.1); padding-bottom: 10px; display: flex; flex-wrap: wrap; justify-content: center; gap: 5px 15px; }
         .location-sub { font-size: 0.95rem; color: #2C1E1B; font-weight: 700; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 15px; line-height: 1.8; }
 
-        /* 社群導流 */
         .social-promo { text-align: center; padding: 40px 15px; background: #fff; border-radius: 20px; max-width: 800px; margin: 20px auto 50px; border: 1px solid #eee; box-shadow: 0 5px 15px rgba(0,0,0,0.03); width: calc(100% - 30px); box-sizing: border-box; }
         .social-promo h2 { color: var(--text-brown); font-size: 1.5rem; font-weight: 800; margin-bottom: 20px; }
         .social-promo p { font-size: 1rem; color: #555; margin-bottom: 30px; font-weight: 700; line-height: 2; letter-spacing: 0.5px; }
@@ -34,7 +32,6 @@
         .section-title { text-align: center; color: var(--text-brown); margin: 60px 0 30px; font-size: 1.7rem; position: relative; padding-bottom: 15px; font-weight: 800; }
         .section-title::after { content: ''; width: 50px; height: 5px; background: var(--accent-gold); position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); border-radius: 3px; }
 
-        /* 方案卡片 */
         .services { padding: 0 15px; max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 30px; }
         .service-card { background: #fff; padding: 35px 25px; border-radius: 25px; box-shadow: 0 12px 30px rgba(0,0,0,0.05); border: 1px solid #f0f0f0; box-sizing: border-box; }
         .service-card h3 { margin-top: 0; font-size: 1.5rem; border-bottom: 2px solid #f0f0f0; padding-bottom: 15px; margin-bottom: 25px; text-align: center; font-weight: 800; }
@@ -45,7 +42,6 @@
         .price-tag { background: rgba(0,0,0,0.2); padding: 15px; border-radius: 12px; margin-top: 20px; border: 1px solid rgba(255,255,255,0.1); }
         .price-row { display: flex; justify-content: space-between; font-size: 1rem; margin: 8px 0; color: #fff; font-weight: 900; }
         
-        /* 蠟品打勾排列 */
         .highlight-wax { padding: 15px; border-radius: 10px; margin-top: 15px; border: 1px dashed rgba(255,255,255,0.5); text-align: center; color: #fff; display: flex; flex-direction: column; align-items: center; }
         .highlight-wax .wax-title { font-weight: 900; font-size: 1.1rem; margin-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.2); width: 100%; padding-bottom: 5px; }
         .highlight-wax ul { list-style: none; padding: 0; margin: 0; text-align: left; }
@@ -54,6 +50,12 @@
 
         .medium-card { background-color: var(--card-medium-bg) !important; color: #fff !important; }
         .medium-card h3 { color: #fff !important; border-bottom-color: rgba(255,255,255,0.2) !important; }
+        
+        /* 特別設計：維護方案樣式 (深色金邊) */
+        .maintenance-card { background-color: #2D1E1B !important; color: #fff !important; border: 2px solid var(--accent-gold) !important; }
+        .maintenance-card h3 { color: var(--accent-gold) !important; border-bottom-color: rgba(176,141,87,0.3) !important; }
+        .maintenance-card .price-row { color: var(--accent-gold) !important; }
+
         .advanced-card { background-color: var(--card-dark-bg) !important; color: #fff !important; }
         .advanced-card h3 { color: var(--card-dark-gold) !important; border-bottom-color: rgba(255,255,255,0.2) !important; }
         .advanced-card .price-row { color: var(--card-dark-gold) !important; }
@@ -92,7 +94,7 @@
         <div class="feature-line"><i class="fas fa-check-circle"></i> 汽機車皆可服務 · 邏輯經營誠信服務</div>
         <div class="location-box">
             <div class="location-main"><span>新莊</span>｜<span>泰山</span>｜<span>板橋</span>｜<span>蘆洲</span>｜<span>中永和</span>｜<span>大台北</span>｜<span>龜山</span></div>
-            <div class="location-sub"><span>新莊副都心重劃區</span> · <span>新莊頭前重劃區</span> · <span>泰山塭仔圳重劃區</span></div>
+            <div class="location-sub"><span>新莊副都心重劃區</span> · <span>新莊頭前重劃區</span> · <span>泰山溫仔圳重劃區</span></div>
         </div>
     </section>
 
@@ -112,16 +114,6 @@
     <h2 class="section-title">精緻護理方案</h2>
     <section class="services">
         <div class="service-card medium-card">
-            <h3>鍍膜包膜維護方案</h3>
-            <ul class="service-list"><li>泡沫預洗</li><li>柏油去除</li><li>鐵粉去除</li><li>水垢去除</li><li>正洗程序</li><li>胎皮護理</li><li>內裝吸塵擦拭</li></ul>
-            <div class="price-tag">
-                <div class="price-row"><span>轎車</span><span>$1,400</span></div>
-                <div class="price-row"><span>休旅</span><span>$1,500</span></div>
-                <div class="price-row"><span>商務</span><span>$2,200</span></div>
-            </div>
-            <div class="highlight-wax"><span class="wax-title">漆面</span><ul><li>Adam's H2O</li><li>Adam's Boost</li></ul></div>
-        </div>
-        <div class="service-card medium-card">
             <h3>基礎維護</h3>
             <ul class="service-list"><li>泡沫預洗</li><li>柏油去除</li><li>正洗程序</li><li>胎皮護理</li><li>內裝吸塵擦拭</li></ul>
             <div class="price-tag">
@@ -133,7 +125,7 @@
         </div>
         <div class="service-card medium-card">
             <h3>經典護理</h3>
-            <ul class="service-list"><li>包含基礎維護項目</li><li>鐵粉去除</li><li>水垢去除</li><li>※機車經典含塑料護理 $600</li></ul>
+            <ul class="service-list"><li>包含基礎維護項目</li><li>全車鐵粉去除</li><li>全車水垢去除</li><li>※機車經典含塑料護理 $600</li></ul>
             <div class="price-tag">
                 <div class="price-row"><span>轎車</span><span>$1,400</span></div>
                 <div class="price-row"><span>休旅</span><span>$1,500</span></div>
@@ -143,7 +135,7 @@
         </div>
         <div class="service-card medium-card">
             <h3>尊榮美容</h3>
-            <ul class="service-list"><li>包含基礎維護項目</li><li>全車柏油/鐵粉去除</li><li>全車細部水垢去除</li><li>全車玻璃油墨去除</li><li>全車玻璃撥水劑施作</li></ul>
+            <ul class="service-list"><li>包含經典護理項目</li><li>瓷土除漆面顆粒</li><li>內裝保養護理</li><li>外觀塑料護理</li><li>全車玻璃油墨去除</li></ul>
             <div class="price-tag">
                 <div class="price-row"><span>轎車</span><span>$2,400</span></div>
                 <div class="price-row"><span>休旅</span><span>$2,500</span></div>
@@ -184,6 +176,16 @@
                 <div class="price-row"><span>商務</span><span>$9,000</span></div>
             </div>
             <div class="highlight-wax"><span class="wax-title">漆面</span><ul><li>Olima RC 9H 鍍膜</li><li>Olima T1 塑料鍍膜</li></ul></div>
+        </div>
+        <div class="service-card maintenance-card">
+            <h3>鍍膜包膜維護方案</h3>
+            <ul class="service-list"><li>泡沫預洗</li><li>柏油去除</li><li>鐵粉去除</li><li>水垢去除</li><li>正洗程序</li><li>胎皮護理</li><li>內裝吸塵擦拭</li></ul>
+            <div class="price-tag">
+                <div class="price-row"><span>轎車</span><span>$1,400</span></div>
+                <div class="price-row"><span>休旅</span><span>$1,500</span></div>
+                <div class="price-row"><span>商務</span><span>$2,200</span></div>
+            </div>
+            <div class="highlight-wax"><span class="wax-title">漆面</span><ul><li>Adam's H2O</li><li>Adam's Boost</li></ul></div>
         </div>
     </section>
 
