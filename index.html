@@ -9,16 +9,14 @@
         :root { --primary-bg: #FDFBFB; --secondary-bg: #F4F1EA; --accent-gold: #C4A77D; --text-dark: #4A4A4A; --text-brown: #5D4037; }
         body { font-family: "PingFang TC", "Microsoft JhengHei", sans-serif; margin: 0; background-color: var(--primary-bg); color: var(--text-dark); line-height: 1.6; scroll-behavior: smooth; }
         
+        /* Header 優化 */
         header { text-align: center; padding: 50px 15px; background: linear-gradient(rgba(253,251,251,0.96), rgba(253,251,251,0.96)), url('https://images.unsplash.com/photo-1552933529-e359b2477262?auto=format&fit=crop&w=1350&q=80'); background-size: cover; background-position: center; border-bottom: 1px solid #f0f0f0; }
         .badge { display: inline-block; background: var(--text-brown); color: #fff; padding: 6px 16px; border-radius: 20px; font-size: 0.75rem; margin-bottom: 15px; font-weight: bold; letter-spacing: 1px; }
-        
         h1 { font-size: 1.8rem; color: var(--text-brown); margin: 5px 0; letter-spacing: 2px; font-weight: 800; white-space: nowrap; }
         
-        /* 標語分兩行且置中 */
+        /* 標語兩行置中 */
         .main-slogan { font-size: 1.1rem; color: var(--accent-gold); font-weight: 600; margin: 18px 0 25px; letter-spacing: 1.5px; line-height: 1.7; padding: 0 10px; display: block; text-align: center; }
-        
         .location-tag { color: #888; font-size: 0.85rem; margin-bottom: 25px; letter-spacing: 1px; font-weight: 500; }
-        
         .nav-btn { background: var(--accent-gold); color: white; padding: 13px 0; width: 210px; border-radius: 50px; text-decoration: none; font-weight: bold; display: block; margin: 12px auto; transition: 0.3s; font-size: 0.95rem; }
 
         .section-title { text-align: center; color: var(--text-brown); margin: 50px 0 30px; font-size: 1.5rem; position: relative; padding-bottom: 12px; font-weight: 700; letter-spacing: 1px; }
@@ -28,7 +26,7 @@
         .gallery-item { position: relative; overflow: hidden; border-radius: 10px; height: 160px; cursor: pointer; background: #eee; }
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* 服務方案列表 */
+        /* 方案卡片列表 */
         .services { padding: 0 15px; max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 20px; }
         .service-card { background: #fff; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); border: 1px solid #f5f5f5; }
         .service-card h3 { color: var(--accent-gold); margin-top: 0; font-size: 1.35rem; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 15px; text-align: center; }
@@ -37,13 +35,13 @@
         .service-list li::before { content: '✓'; color: var(--accent-gold); margin-right: 8px; font-weight: 900; }
         .highlight-wax { background: #fffaf5; padding: 10px; border-radius: 8px; margin-top: 15px; font-weight: 600; color: var(--text-brown); border: 1px dashed var(--accent-gold); font-size: 0.85rem; text-align: center; }
 
-        /* 預約區塊 */
-        .booking-section { padding: 60px 15px; text-align: center; }
-        .booking-container { max-width: 100%; background: white; padding: 40px 25px; border-radius: 30px; box-shadow: 0 15px 40px rgba(0,0,0,0.06); border: 1px solid #eee; }
+        /* 預約區塊 - 強制置中修正 */
+        .booking-section { padding: 60px 15px; text-align: center; display: flex; flex-direction: column; align-items: center; }
+        .booking-container { width: 100%; max-width: 400px; background: white; padding: 40px 20px; border-radius: 30px; box-shadow: 0 15px 40px rgba(0,0,0,0.06); border: 1px solid #eee; box-sizing: border-box; margin: 0 auto; }
         .qr-placeholder img { width: 170px; height: 170px; margin: 25px 0; border: 1px solid #eee; padding: 6px; border-radius: 10px; }
-        .btn-line { background-color: #06C755; color: white; padding: 15px 50px; border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-block; font-size: 1.15rem; }
+        .btn-line { background-color: #06C755; color: white; padding: 15px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-block; font-size: 1.15rem; width: 80%; max-width: 250px; }
         
-        .social-info { margin-top: 30px; font-size: 1rem; color: #666; }
+        .social-info { margin-top: 30px; font-size: 1rem; color: #666; width: 100%; text-align: center; }
         .social-info a { color: var(--text-brown); text-decoration: none; display: block; margin: 15px 0; font-weight: 500; }
         
         footer { padding: 40px 15px; text-align: center; color: #bbb; font-size: 0.8rem; background: #fafafa; }
@@ -60,7 +58,7 @@
 </head>
 <body>
     <header>
-        <div class="badge">💻 工程師的副業：邏輯經營 · 效率洗車</div>
+        <div class="badge">💻 工程師的副業：職人經營 · 邏輯美研</div>
         <h1>法蘭克精緻汽車美容</h1>
         <div class="main-slogan">
             用極致的細節<br>
