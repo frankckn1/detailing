@@ -1067,11 +1067,6 @@ footer {
     </div>
   </div>
 
-  <!-- Reset -->
-  <div style="padding:0 28px 24px; text-align:right;">
-    <button onclick="resetData()" style="background:none; border:1px solid rgba(122,92,66,0.25); color:#9e8870; padding:8px 20px; border-radius:3px; cursor:pointer; font-size:0.78rem; letter-spacing:0.05em;">清除所有資料</button>
-  </div>
-
 </div>
 </div>
 
@@ -1182,16 +1177,6 @@ window.openAdmin = async function() {
 window.closeAdmin = function() {
   document.getElementById('admin-panel').style.display = 'none';
 };
-window.resetData = async function() {
-  if (!confirm('確定要清除所有統計資料嗎？')) return;
-  try {
-    await setDoc(doc(db, 'analytics', 'total'), { count: 0 });
-    await setDoc(doc(db, 'analytics', 'daily'), {});
-    await setDoc(doc(db, 'analytics', 'clicks'), {});
-    await renderAdmin();
-  } catch(e) { alert('清除失敗：' + e.message); }
-};
-
 async function renderAdmin() {
   const today = getToday();
   const weekDates = getWeekDates();
