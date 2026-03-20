@@ -738,7 +738,7 @@ footer {
     <div class="hero-stat"><div class="hero-stat-num">7+</div><div class="hero-stat-label">服務區域</div></div>
     <div class="hero-stat"><div class="hero-stat-num">9</div><div class="hero-stat-label">精緻方案</div></div>
     <div class="hero-stat"><div class="hero-stat-num">100%</div><div class="hero-stat-label">職人手工</div></div>
-    <div class="hero-stat"><div class="hero-stat-num">到府</div><div class="hero-stat-label">代洗服務</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">到府</div><div class="hero-stat-label">免費牽車服務</div></div>
   </div>
 
   <div class="scroll-cue">
@@ -1021,16 +1021,253 @@ footer {
   <p>© 2026 Frank's Fine Car Detailing · 邏輯經營 · 誠信服務</p>
 </footer>
 
-<script>
+<!-- ADMIN DASHBOARD -->
+<div id="admin-panel" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:9999; overflow-y:auto; padding:20px;">
+<div style="max-width:780px; margin:0 auto; background:#faf7f2; border-radius:8px; overflow:hidden; box-shadow:0 24px 80px rgba(0,0,0,0.5);">
+
+  <!-- Panel Header -->
+  <div style="background:#1e1410; padding:20px 28px; display:flex; justify-content:space-between; align-items:center;">
+    <div>
+      <div style="font-family:'Cormorant Garamond',serif; font-size:1.4rem; color:#d4af6a; letter-spacing:0.08em;">後台數據總覽</div>
+      <div style="font-size:0.7rem; color:rgba(255,255,255,0.35); margin-top:2px; letter-spacing:0.1em;">FRANK'S ANALYTICS DASHBOARD</div>
+    </div>
+    <button onclick="closeAdmin()" style="background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); color:#fff; width:36px; height:36px; border-radius:50%; cursor:pointer; font-size:1.1rem; display:flex; align-items:center; justify-content:center;">✕</button>
+  </div>
+
+  <!-- Summary Cards -->
+  <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px; padding:20px 28px 0;">
+    <div style="background:#fff; border:1px solid rgba(122,92,66,0.12); border-radius:6px; padding:16px; text-align:center;">
+      <div style="font-size:0.65rem; color:#9e8870; letter-spacing:0.15em; text-transform:uppercase; margin-bottom:6px;">今日瀏覽</div>
+      <div id="stat-today" style="font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:600; color:#3e2a1a; line-height:1;">0</div>
+    </div>
+    <div style="background:#fff; border:1px solid rgba(122,92,66,0.12); border-radius:6px; padding:16px; text-align:center;">
+      <div style="font-size:0.65rem; color:#9e8870; letter-spacing:0.15em; text-transform:uppercase; margin-bottom:6px;">本週瀏覽</div>
+      <div id="stat-week" style="font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:600; color:#3e2a1a; line-height:1;">0</div>
+    </div>
+    <div style="background:#fff; border:1px solid rgba(122,92,66,0.12); border-radius:6px; padding:16px; text-align:center;">
+      <div style="font-size:0.65rem; color:#9e8870; letter-spacing:0.15em; text-transform:uppercase; margin-bottom:6px;">總瀏覽次數</div>
+      <div id="stat-total" style="font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:600; color:#3e2a1a; line-height:1;">0</div>
+    </div>
+  </div>
+
+  <!-- Daily Chart -->
+  <div style="padding:20px 28px 0;">
+    <div style="background:#fff; border:1px solid rgba(122,92,66,0.12); border-radius:6px; padding:20px;">
+      <div style="font-size:0.72rem; font-weight:700; color:#3e2a1a; letter-spacing:0.1em; margin-bottom:16px; text-transform:uppercase;">近 7 天每日瀏覽</div>
+      <div id="daily-chart" style="display:flex; align-items:flex-end; gap:8px; height:80px;"></div>
+      <div id="daily-labels" style="display:flex; gap:8px; margin-top:6px;"></div>
+    </div>
+  </div>
+
+  <!-- Click Tracking -->
+  <div style="padding:20px 28px;">
+    <div style="background:#fff; border:1px solid rgba(122,92,66,0.12); border-radius:6px; padding:20px;">
+      <div style="font-size:0.72rem; font-weight:700; color:#3e2a1a; letter-spacing:0.1em; margin-bottom:16px; text-transform:uppercase;">各區塊點擊次數</div>
+      <div id="click-list"></div>
+    </div>
+  </div>
+
+  <!-- Reset -->
+  <div style="padding:0 28px 24px; text-align:right;">
+    <button onclick="resetData()" style="background:none; border:1px solid rgba(122,92,66,0.25); color:#9e8870; padding:8px 20px; border-radius:3px; cursor:pointer; font-size:0.78rem; letter-spacing:0.05em;">清除所有資料</button>
+  </div>
+
+</div>
+</div>
+
+<!-- Admin Trigger (hidden button bottom-right) -->
+<button id="admin-btn" onclick="openAdmin()" title="後台管理" style="position:fixed; bottom:24px; right:24px; width:44px; height:44px; border-radius:50%; background:#1e1410; border:1px solid rgba(184,148,63,0.4); color:#b8943f; font-size:1rem; cursor:pointer; z-index:999; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 20px rgba(0,0,0,0.3); transition:all 0.3s;">
+  <i class="fas fa-chart-bar"></i>
+</button>
+
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+import { getFirestore, doc, getDoc, setDoc, updateDoc, increment, collection, getDocs } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+
+// ── Firebase 設定 ──
+const firebaseConfig = {
+  apiKey: "AIzaSyDY_NMAaV0U8wpW1uXHqc1Ca0TrhQYbWQs",
+  authDomain: "frank-car-detailing.firebaseapp.com",
+  projectId: "frank-car-detailing",
+  storageBucket: "frank-car-detailing.firebasestorage.app",
+  messagingSenderId: "641645889052",
+  appId: "1:641645889052:web:38317322847372637801d9",
+  measurementId: "G-NHGKL5E0EF"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// ── 工具函式 ──
+function getToday() {
+  return new Date().toISOString().slice(0, 10);
+}
+function getWeekDates() {
+  const dates = [];
+  for (let i = 6; i >= 0; i--) {
+    const d = new Date();
+    d.setDate(d.getDate() - i);
+    dates.push(d.toISOString().slice(0, 10));
+  }
+  return dates;
+}
+
+// ── 記錄頁面瀏覽 ──
+async function recordPageView() {
+  const today = getToday();
+  const totalRef = doc(db, 'analytics', 'total');
+  const dailyRef = doc(db, 'analytics', 'daily');
+  try {
+    const totalSnap = await getDoc(totalRef);
+    if (totalSnap.exists()) {
+      await updateDoc(totalRef, { count: increment(1) });
+    } else {
+      await setDoc(totalRef, { count: 1 });
+    }
+    const dailySnap = await getDoc(dailyRef);
+    if (dailySnap.exists()) {
+      await updateDoc(dailyRef, { [today]: increment(1) });
+    } else {
+      await setDoc(dailyRef, { [today]: 1 });
+    }
+  } catch(e) { console.warn('Analytics write error:', e); }
+}
+
+// ── 記錄點擊 ──
+async function recordClick(label) {
+  const clickRef = doc(db, 'analytics', 'clicks');
+  try {
+    const snap = await getDoc(clickRef);
+    if (snap.exists()) {
+      await updateDoc(clickRef, { [label]: increment(1) });
+    } else {
+      await setDoc(clickRef, { [label]: 1 });
+    }
+  } catch(e) { console.warn('Click write error:', e); }
+}
+
+// ── 點擊追蹤綁定 ──
+const TRACK_TARGETS = [
+  { selector: '.btn-primary',     label: 'Hero — LINE 立即預約' },
+  { selector: '.btn-ghost',       label: 'Hero — 查看方案' },
+  { selector: '.btn-line',        label: '預約區 — LINE 立即預約' },
+  { selector: '.btn-fb',          label: '社群 — Facebook' },
+  { selector: '.btn-ig',          label: '社群 — Instagram' },
+  { selector: '.qr-box',          label: '預約區 — QR Code' },
+  { selector: '.card-gold',       label: '極致全護方案卡' },
+  { selector: '.booking-section', label: '預約區塊' },
+];
+TRACK_TARGETS.forEach(({ selector, label }) => {
+  document.querySelectorAll(selector).forEach(el => {
+    el.addEventListener('click', () => recordClick(label));
+  });
+});
+
+// ── Reveal 動畫 ──
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
+    if (entry.isIntersecting) entry.target.classList.add('visible');
   });
 }, { threshold: 0.1 });
-
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ── 執行頁面瀏覽記錄 ──
+recordPageView();
+
+// ── 後台面板 ──
+window.openAdmin = async function() {
+  document.getElementById('admin-panel').style.display = 'block';
+  await renderAdmin();
+};
+window.closeAdmin = function() {
+  document.getElementById('admin-panel').style.display = 'none';
+};
+window.resetData = async function() {
+  if (!confirm('確定要清除所有統計資料嗎？')) return;
+  try {
+    await setDoc(doc(db, 'analytics', 'total'), { count: 0 });
+    await setDoc(doc(db, 'analytics', 'daily'), {});
+    await setDoc(doc(db, 'analytics', 'clicks'), {});
+    await renderAdmin();
+  } catch(e) { alert('清除失敗：' + e.message); }
+};
+
+async function renderAdmin() {
+  const today = getToday();
+  const weekDates = getWeekDates();
+
+  // 讀取資料
+  let total = 0, daily = {}, clicks = {};
+  try {
+    const [tSnap, dSnap, cSnap] = await Promise.all([
+      getDoc(doc(db, 'analytics', 'total')),
+      getDoc(doc(db, 'analytics', 'daily')),
+      getDoc(doc(db, 'analytics', 'clicks')),
+    ]);
+    if (tSnap.exists()) total = tSnap.data().count || 0;
+    if (dSnap.exists()) daily = dSnap.data();
+    if (cSnap.exists()) clicks = cSnap.data();
+  } catch(e) {
+    console.warn('Admin read error:', e);
+  }
+
+  // Summary
+  const todayCount = daily[today] || 0;
+  const weekTotal = weekDates.reduce((s, d) => s + (daily[d] || 0), 0);
+  document.getElementById('stat-today').textContent = todayCount;
+  document.getElementById('stat-week').textContent = weekTotal;
+  document.getElementById('stat-total').textContent = total;
+
+  // 近7天長條圖
+  const maxVal = Math.max(...weekDates.map(d => daily[d] || 0), 1);
+  const chartEl = document.getElementById('daily-chart');
+  const labelEl = document.getElementById('daily-labels');
+  chartEl.innerHTML = '';
+  labelEl.innerHTML = '';
+  weekDates.forEach(d => {
+    const val = daily[d] || 0;
+    const pct = Math.round((val / maxVal) * 100);
+    const isToday = d === today;
+    const dayName = ['日','一','二','三','四','五','六'][new Date(d).getDay()];
+    const col = document.createElement('div');
+    col.style.cssText = 'flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;';
+    col.innerHTML = `
+      <div style="font-size:0.68rem;color:${isToday?'#b8943f':'#9e8870'};font-weight:${isToday?'700':'400'}">${val}</div>
+      <div style="width:100%;height:${Math.max(pct*0.6,2)}px;background:${isToday?'#b8943f':'rgba(184,148,63,0.25)'};border-radius:2px 2px 0 0;min-height:2px;"></div>
+    `;
+    chartEl.appendChild(col);
+    const lbl = document.createElement('div');
+    lbl.style.cssText = `flex:1;text-align:center;font-size:0.65rem;color:${isToday?'#3e2a1a':'#9e8870'};font-weight:${isToday?'700':'400'};`;
+    lbl.textContent = '週' + dayName;
+    labelEl.appendChild(lbl);
+  });
+
+  // 點擊排行
+  const clickEl = document.getElementById('click-list');
+  const sorted = Object.entries(clicks).sort((a, b) => b[1] - a[1]);
+  const maxClick = sorted.length ? sorted[0][1] : 1;
+  if (!sorted.length) {
+    clickEl.innerHTML = '<div style="font-size:0.85rem;color:#9e8870;text-align:center;padding:16px 0;">尚無點擊資料</div>';
+    return;
+  }
+  clickEl.innerHTML = sorted.map(([label, count]) => {
+    const pct = Math.round((count / maxClick) * 100);
+    return `
+      <div style="margin-bottom:14px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;">
+          <span style="font-size:0.82rem;color:#3e2a1a;font-weight:500;">${label}</span>
+          <span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:#b8943f;">${count}</span>
+        </div>
+        <div style="height:5px;background:rgba(184,148,63,0.15);border-radius:3px;overflow:hidden;">
+          <div style="height:100%;width:${pct}%;background:#b8943f;border-radius:3px;"></div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+document.getElementById('admin-panel').addEventListener('click', function(e) {
+  if (e.target === this) window.closeAdmin();
+});
 </script>
 </body>
 </html>
